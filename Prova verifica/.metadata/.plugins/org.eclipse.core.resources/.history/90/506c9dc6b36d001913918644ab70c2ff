@@ -1,0 +1,36 @@
+package provaverificatepsit;
+import java.util.TreeMap;
+public class Libri {
+	TreeMap<String, Libro> libri;
+	//key -> codice del libro
+		
+	//costruttore
+	public Libro()	{
+		libri=new TreeMap<String, Libro>();
+	}
+	
+	public void addLibro(Libro l) {
+		if(!libri.containsKey(l.getCodice()))
+		{
+			libri.put(l.getCatalogazione(), l.clone());
+		}
+		else
+			System.out.println("Libro già esistente");
+	}
+	
+	public void rimuoviLibro(String code) {
+		if(libri.containsKey(code))
+		{
+			libri.remove(code);
+		}
+		else
+			System.out.println("Libro non esistente");
+	}
+	
+	public Libro cercaLibro(String code) {
+		if(libri.containsKey(code))
+			return libri.get(code).clone();
+		else
+			System.out.println("Libro non esistente");
+	}
+}
